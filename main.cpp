@@ -34,13 +34,13 @@ int main(int argc, const char * argv[]) {
 
 
 bool isDependent(Instr& instr1, Instr& instr2){
-    if (instr1.reg1 != "" && instr1.reg1 == instr2.reg1) {
+    if (instr1.reg1 != "" && instr1.reg1 == instr2.reg1 ) {
         return true;
     }
-    if ( instr1.reg2 != "" && instr1.reg2 == instr2.reg2) {
+    if ( instr1.reg1 != "" && instr1.reg1 == instr2.reg2) {
         return true;
     }
-    if (instr1.reg3 != "" && instr1.reg3 == instr2.reg3 ) {
+    if (instr1.reg1 != "" && instr1.reg1 == instr2.reg3 ) {
         return true;
     }
     return false;
