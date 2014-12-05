@@ -15,21 +15,27 @@ void checkDependency(vector<Instr>& instrVec);
 int main(int argc, const char * argv[]) {
     // insert code here...
     ifstream arq(getenv("MYARQ"));    cin.rdbuf(arq.rdbuf());
+    vector<string> buffer;
+    string str;
+    while (getline(cin, str)) {
+        buffer.push_back(str);
+    }
+    cout << "Raw input instructions: \n";
+    for (auto entry : buffer) {
+        cout << entry << endl;
+    }
+    cout << endl;
     vector<Instr> instrVec;
-    parseInstr(instrVec);
     
+    parseInstr(instrVec, buffer);
+    cout << "Instructions after parsing:\n";
     for(unsigned i = 0; i < instrVec.size(); i++){
         instrVec[i].rep = i;
-        cout << instrVec[i].rep << setw(10) << instrVec[i].operation << setw(7) << instrVec[i].reg1 << setw(7) << instrVec[i].reg2 << setw(7) << instrVec[i].reg3 << endl;
+        cout << "#" << instrVec[i].rep << setw(12) << instrVec[i].operation << setw(7) << instrVec[i].reg1 << setw(7) << instrVec[i].reg2 << setw(7) << instrVec[i].reg3 << endl;
     }
     cout << endl;
     
     checkDependency(instrVec);
-    for(unsigned i = 0; i < instrVec.size(); i++){
-        instrVec[i].rep = i;
-        cout << instrVec[i].rep << setw(10) << instrVec[i].operation << setw(7) << instrVec[i].reg1 << setw(7) << instrVec[i].reg2 << setw(7) << instrVec[i].reg3 << endl;
-    }
-    return 0;
 }
 
 
