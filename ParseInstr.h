@@ -187,15 +187,15 @@ void parseInstr(vector<Instr>& instrVec){
     }
     for (auto& inst : instrVec){
      //   cout << inst.reg1[inst.reg1.size()-1] << " " << inst.reg2 << " " << inst.reg3 << endl;
-        if (inst.reg1[inst.reg1.size()-1] == ',') {
+        if (!isalnum(inst.reg1[inst.reg1.size()-1])) {
             inst.reg1.pop_back();
         }
 
-        if (inst.reg2[inst.reg2.size()-1] == ',') {
+        if (!isalnum(inst.reg2[inst.reg2.size()-1])) {
             inst.reg2.pop_back();
         }
 
-        if (inst.reg3[inst.reg3.size()-1] == ',') {
+        if (!isalnum(inst.reg3[inst.reg3.size()-1])) {
             inst.reg3.pop_back();
         }
     }
