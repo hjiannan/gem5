@@ -149,7 +149,6 @@ void parseInstr(vector<Instr>& instrVec, vector<string> buffer){
                 }
                 instr.reg2 = temp;
                 getline(scin, waste);
-                if (instr.reg2[instr.reg2.size()-1] == ',') instr.reg2.pop_back();
                 instrVec.push_back(instr);
                 continue;
             }
@@ -196,16 +195,20 @@ void parseInstr(vector<Instr>& instrVec, vector<string> buffer){
     }
     for (auto& inst : instrVec){
  //       cout << inst.reg1 << " " << inst.reg2 << " " << inst.reg3 << endl;
-        if (!isalnum(inst.reg1[inst.reg1.size()-1])) {
-            inst.reg1.pop_back();
+        if (!inst.reg1.empty() && !isalnum(inst.reg1[inst.reg1.size()-1])) {
+            inst.reg1 = inst.reg1.substr(0, inst.reg1.size()-1);
         }
 
-        if (!isalnum(inst.reg2[inst.reg2.size()-1])) {
-            inst.reg2.pop_back();
+        if (!inst.reg2.empty() && !isalnum(inst.reg2[inst.reg2.size()-1])) {
+       //     cout << "dsf" << inst.reg2<< endl;
+            inst.reg2 = inst.reg2.substr(0, inst.reg2.size()-1);
+       //     cout << "dsf" << inst.reg2<< endl;
+
         }
 
-        if (!isalnum(inst.reg3[inst.reg3.size()-1])) {
-            inst.reg3.pop_back();
+        if (!inst.reg3.empty() && !isalnum(inst.reg3[inst.reg3.size()-1])) {
+            inst.reg3 = inst.reg1.substr(0, inst.reg3.size()-1);
+
         }
     }
 }
